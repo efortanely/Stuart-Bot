@@ -1,1 +1,1 @@
-worker: python stuart-bot.py
+web: python server.py

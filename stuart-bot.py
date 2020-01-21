@@ -7,11 +7,11 @@ import cv2
 import os
 
 load_dotenv()
-CAM_URL = os.getenv("CAM_URL")
-CONSUMER_KEY = os.getenv('CONSUMER_KEY')
-CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
-ACCESS_KEY = os.getenv('ACCESS_KEY')
-ACCESS_SECRET = os.getenv('ACCESS_SECRET')
+CAM_URL = os.environ("CAM_URL")
+CONSUMER_KEY = os.environ('CONSUMER_KEY')
+CONSUMER_SECRET = os.environ('CONSUMER_SECRET')
+ACCESS_KEY = os.environ('ACCESS_KEY')
+ACCESS_SECRET = os.environ('ACCESS_SECRET')
 searching_for_cat = True
 
 def any_cats(image, classifier = "haarcascade_frontalcatface_extended.xml"):
