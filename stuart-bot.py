@@ -3,6 +3,7 @@ import datetime
 import requests
 import tweepy
 import time
+import sys
 import cv2
 import os
 
@@ -32,16 +33,20 @@ def home():
 
                 if len(rects) > 0:
                     print('Cat Detected')
+                    sys.stdout.flush()
                     api.update_with_media("snapshot.jpg")
                     searching_for_cat = False
                 else:
                     print('No cat detected')
+                    sys.stdout.flush()
             
             except requests.RequestException as e:
                 print(f"Webcam inaccessible.")
                 print(f"{e}")
+                sys.stdout.flush()
             except Exception as e:
                 print(f"{e}")
+                sys.stdout.flush()
             
             time.sleep(5)
         else:
@@ -68,4 +73,4 @@ def take_snapshot(filename, omega_url = f"http://{CAM_URL}/?action=snapshot"):
         raise requests.RequestException()
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host= '0.0.0.0', port=environ.get('PORT'))
