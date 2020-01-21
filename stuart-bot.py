@@ -73,4 +73,4 @@ def take_snapshot(filename, omega_url = f"http://{CAM_URL}/?action=snapshot"):
         raise requests.RequestException()
 
 if __name__ == '__main__':
-    app.run(host= '0.0.0.0', port=environ.get('PORT'))
+    app.run(host= '0.0.0.0', port=os.environ.get('PORT'))
