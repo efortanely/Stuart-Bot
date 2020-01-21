@@ -7,7 +7,6 @@ import sys
 import cv2
 import os
 
-
 app = Flask(__name__)
     
 CAM_URL = os.environ["CAM_URL"]
