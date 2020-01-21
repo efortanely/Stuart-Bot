@@ -9,11 +9,11 @@ import os
 
 app = Flask(__name__)
     
-CAM_URL = os.environ("CAM_URL")
-CONSUMER_KEY = os.environ('CONSUMER_KEY')
-CONSUMER_SECRET = os.environ('CONSUMER_SECRET')
-ACCESS_KEY = os.environ('ACCESS_KEY')
-ACCESS_SECRET = os.environ('ACCESS_SECRET')
+CAM_URL = os.environ["CAM_URL"]
+CONSUMER_KEY = os.environ['CONSUMER_KEY']
+CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+ACCESS_KEY = os.environ['ACCESS_KEY']
+ACCESS_SECRET = os.environ['ACCESS_SECRET']
 
 @app.route('/')
 def home():
