@@ -1,6 +1,6 @@
 # Stuart-Bot
 
-This is a bot that tweets photos of Stuart to @TheStuartBot. It does this by getting a snapshot from the video feed streamed by the Onion Omega 2+, identifying the objects in it using ResNet-50, then if a cat exists a picture is tweeted.
+This is a bot that tweets photos of Stuart to [@TheStuartBot](https://twitter.com/TheStuartBot). It does this by getting a snapshot from the video feed streamed by the Onion Omega 2+, identifying the objects in it using ResNet-50, then if a cat exists a picture is tweeted.
 
 To run the program yourself, you will need:
 
