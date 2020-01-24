@@ -1,3 +1,4 @@
+from imageai.Detection import ObjectDetection
 from dotenv import load_dotenv
 import requests
 import tweepy
@@ -21,14 +22,17 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
-def any_cats(image, classifier = "haarcascade_frontalcatface_extended.xml"):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-     
-    detector = cv2.CascadeClassifier(classifier)
-    rects = detector.detectMultiScale(gray, scaleFactor=1.01,
-	    minNeighbors=3, minSize=(75, 75)) 
-    
-    return rects
+detector = ObjectDetection()
+detector.setModelTypeAsRetinaNet()
+detector.setModelPath("resnet50.h5")
+detector.loadModel()
+
+def any_cats(image):
+    detections = detector.detectObjectsFromImage(input_image=image, output_image_path="imagenew.jpg")
+    for d in detections:
+        if d['name'] is "cat" and d['percentage_probability'] > 69:
+            return True
+    return False
 
 def take_snapshot(filename, omega_url = f"http://{CAM_URL}/?action=snapshot"):
     r = requests.get(omega_url, stream=True)
@@ -43,10 +47,9 @@ while True:
     if searching_for_cat:
         try:
             take_snapshot("snapshot.jpg")
-            image = cv2.imread("snapshot.jpg")
-            rects = any_cats(image)
+            is_cats = any_cats("snapshot.jpg")
 
-            if len(rects) > 0:
+            if is_cats:
                 print('Cat Detected')
                 api.update_with_media("snapshot.jpg")
                 searching_for_cat = False
@@ -63,6 +66,8 @@ while True:
         time.sleep(5)
         if sec == 60 * 10:
             searching_for_cat = False
+            sec = 0
+
     else:
         time.sleep(60 * 50)
         searching_for_cat = True
