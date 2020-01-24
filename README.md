@@ -7,8 +7,8 @@ To run the program yourself, you will need:
 - An Onion Omega 2+ and dock
 - A webcam with a USB
 - The [ResNet-50 model](https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_coco_best_v2.0.1.h5)
--A Twitter Development account (which has a waiting period before you can start creating apps)
--A .env file containing the environment variables found in the stuart-bot.py file.
+- A Twitter Development account (which has a waiting period before you can start creating apps)
+- A .env file containing the environment variables found in the stuart-bot.py file.
 
 Then follow these steps:
 
